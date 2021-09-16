@@ -45,6 +45,7 @@ public class Pedido {
 	/** GETTERS & SETTERS*/
 	public List<ItemPedido> getItems() {
 		return items;
+		assert items == 0 : "la cantidad de ítems no puede ser 0, siempre tiene que haber un item en el pedido ";
 	}
 
 	public void setItems(List<ItemPedido> items) {

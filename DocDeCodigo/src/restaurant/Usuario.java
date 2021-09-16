@@ -45,6 +45,7 @@ public class Usuario {
 		this.nombreYApellido = nombreYApellido;
 		this.tipoUsuario = tipoUsuario;
 		this.saldoCuenta = saldoCuenta;
+		assert mail: "el mail debe ser @gmail.com";
 		this.email=email;
 	}
 	/**

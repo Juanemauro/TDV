@@ -34,6 +34,7 @@ public class Producto {
 
 	/** GETTERS & SETTERS */
 	public int getStock() {
+		assert stock < 0 : 'El stock no puede ser menor a cero';
 		return stock;
 	}
 	public void setStock(int stock) {
