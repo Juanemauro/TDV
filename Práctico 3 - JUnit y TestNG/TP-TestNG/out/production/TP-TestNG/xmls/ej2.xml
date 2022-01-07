@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TP TEST NG " verbose="1">
+    <!-- TP TEST NG -->
+    <parameter name="tester-name" value="Juan" />
+    <test name="Ingresar recetas con entre 0 y 10 ingredientes">
+        <classes>
+            <class name="test.ProgramaTest">
+                <methods>
+                    <include name="testRecetaCantIngRandom" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

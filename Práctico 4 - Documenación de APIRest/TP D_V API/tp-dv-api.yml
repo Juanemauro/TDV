@@ -1,0 +1,239 @@
+swagger: "2.0"
+info:
+  description: "Esto describe el enunciado del ejercicio 1 del TP de D&V de APIs."
+  version: "1.0.0"
+  title: "Club Teclas Unidos" # URLs implementadas sobre Racing Club
+  termsOfService: "..."
+  contact:
+    email: "jmauro@alumnos.exa.unicen.edu.ar"
+  license:
+    name: "Apache 2.0" # Dejo lo mismo?
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html" # Dejo lo mismo?
+host: "petstore.swagger.io" # Dejo lo mismo?
+basePath: "/v2"
+tags:
+- name: "socio"
+  description: "Toda la información sobre el socio"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.racingclub.com.ar/socios/"
+- name: "instalacion" # Se pueden usar caracteres especiales?
+  description: "Access to.. completar"
+- name: "ofertaAct" 
+  description: "Operations about user"
+  externalDocs:
+    description: "Info sobre ofertas de actividades:"
+    url: "https://www.racingclub.com.ar/deportes"
+- name: "actividad" 
+  description: "Operations about user"
+schemes:
+- "https"
+- "http"
+paths:
+  /socio:
+    post:
+      tags:
+      - "socio"
+      summary: "Add a new socio in to the system."
+      description: ""
+      operationId: "addSocio"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Socio object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Socio"
+      responses:
+        "405":
+          description: "Invalid input"
+  /socio/findByName:
+    get:
+      tags:
+      - "socio"
+      summary: "Find socios by name"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "findSocioByName"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "nombre"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Socio"
+        "400":
+          description: "Invalid status value"
+      
+
+definitions:
+  Socio:
+    type: "object"
+    properties:
+      idSocio:
+        type: "integer"
+        format: "int64" # auto incremental -> cómo se pone?
+      nombre:
+        type: "string"
+      apellido:
+        type: "string"
+      edad:
+        type: "integer"
+        format: "int64"
+      dni:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "placed"
+        - "approved"
+        - "delivered"
+      complete:
+        type: "boolean"
+        default: false
+    xml:
+      name: "Order"
+
+
+      //// ejmplo personaje con Juanse
+
+swagger: "2.0"
+info:
+  description: "Esto describe el enunciado del ejercicio 1 del TP de D&V de APIs."
+  version: "1.0.0"
+  title: "Club Teclas Unidos" # URLs implementadas sobre Racing Club
+  termsOfService: "..."
+  contact:
+    email: "jmauro@alumnos.exa.unicen.edu.ar"
+  license:
+    name: "Apache 2.0" # Dejo lo mismo?
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html" # Dejo lo mismo?
+host: "petstore.swagger.io" # Dejo lo mismo?
+basePath: "/v2"
+tags:
+- name: "socio"
+  description: "Toda la información sobre el socio"
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.racingclub.com.ar/socios/"
+- name: "instalacion" # Se pueden usar caracteres especiales?
+  description: "Access to.. completar"
+- name: "ofertaAct" 
+  description: "Operations about user"
+  externalDocs:
+    description: "Info sobre ofertas de actividades:"
+    url: "https://www.racingclub.com.ar/deportes"
+- name: "actividad" 
+  description: "Operations about user"
+schemes:
+- "https"
+- "http"
+paths:
+  /Personaje:
+    get:
+      tags:
+      - "socio"
+      summary: "Get personajes"
+      description: "trae todos los personajes"
+      operationId: "getPersonajes"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Personaje"
+        "400":
+          description: "Invalid status value"
+  /Personaje/{id}:
+    get:
+      tags:
+      - "socio"
+      summary: "Get personajes"
+      description: "trae todos los personajes"
+      operationId: "getPersonajesById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of character"
+        required: true
+        type: "inter"
+        format: "int64"
+        
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Personaje"
+        "400":
+          description: "Invalid status value"
+  
+          
+      
+
+definitions:
+  Personaje:
+    type: "object"
+    properties:
+      char_id:
+        type: "integer"
+      name:
+        type: "string"
+      birthday:
+        type: "string"
+      occupation:
+        type: "integer"
+        format: "int64"
+      img:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "placed"
+        - "approved"
+        - "delivered"
+      nickname:
+        type: "boolean"
+        default: false
+      appearance:
+        type: array
+        items:
+          type: "integer"
+      portrayed:
+        type: "string"
+      category:
+        type: "string"
+      better_call_saul_appearance:
+        type: array
+        items:
+          type: "integer"
+    xml:
+      name: "Order"
